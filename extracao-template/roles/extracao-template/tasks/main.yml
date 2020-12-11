@@ -1,0 +1,52 @@
+---
+###Avalia usuários locais em linux como ponto de auditoria.
+
+- name: /usr/bin/python3.6 SLES 15
+  set_fact:
+    ansible_python_interpreter: "/usr/bin/python3.6"
+  when:
+    - ansible_facts['distribution'] == "SLES"
+    - ansible_facts['distribution_major_version'] == "15"
+
+- name: Incluindo vault
+  include_vars: vault.yml
+  no_log: true
+
+- name: ------------------------------------ enviromments.yml --------------------------------------
+  include_tasks: enviromments.yml
+  when: 
+    - inventory_hostname != "DB275"
+    - inventory_hostname != "DB276"
+    - inventory_hostname != "DB274"
+    - inventory_hostname != "DB273"
+    - inventory_hostname != "DB277"
+    - inventory_hostname != "DB272"
+    - inventory_hostname != "DB273"
+    - inventory_hostname != "DB387"
+    - inventory_hostname != "DB388" 
+    - inventory_hostname != "DM01DBADM01"
+    - inventory_hostname != "DM01DBADM02" 
+    - inventory_hostname != "DM01DBADM03" 
+    - inventory_hostname != "DM01DBADM04" 
+    - inventory_hostname != "DM04DBADM01" 
+    - inventory_hostname != "DM04DBADM02" 
+    - inventory_hostname != "DM04DBADM03" 
+    - inventory_hostname != "DM04DBADM04" 
+    - inventory_hostname != "DB746" 
+    - inventory_hostname != "DB745" 
+    - inventory_hostname != "DB386" 
+    - inventory_hostname != "DB278" 
+
+
+- name: ------------------------------------ rac-enviromments.yml --------------------------------------
+  include_tasks: rac-enviromments.yml
+  when: inventory_hostname == "DB275" or inventory_hostname == "DB276" or inventory_hostname == "DB274" or inventory_hostname == "DB273" or inventory_hostname == "DB387" or inventory_hostname == "DB388" or inventory_hostname == "DM01DBADM01" or inventory_hostname == "DM01DBADM02" or inventory_hostname == "DM01DBADM03" or inventory_hostname == "DM01DBADM04" or inventory_hostname == "DM04DBADM01" or inventory_hostname == "DM04DBADM02" or inventory_hostname == "DM04DBADM03" or inventory_hostname == "DM04DBADM04" or inventory_hostname == "DB277" or inventory_hostname == "DB272" or inventory_hostname == "DB746" or inventory_hostname == "DB745" or inventory_hostname == "DB386" or inventory_hostname == "DB278"
+
+- name: ------------------------------------ database.yml --------------------------------------
+  include_tasks: database.yml
+
+- name: ------------------------------------ run.yml --------------------------------------
+  include_tasks: run.yml
+
+- name: ------------------------------------ email.yml --------------------------------------
+  include_tasks: email.yml
