@@ -1,7 +1,7 @@
 ---
 
 - file:
-    path: /tmp/run_all_databases_ansible_oracle
+    path: /tmp/extracao_template/
     state: directory
     mode: 0777
     

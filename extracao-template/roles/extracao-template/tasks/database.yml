@@ -1,9 +1,7 @@
 --- 
-
-#copia o arquivo para o localhost
 - name: clean run_all_databases_select
   remote_user: root
-  shell: "rm -rf /tmp/run_all_databases_ansible_oracle/*"
+  shell: "rm -rf /tmp/extracao_template/*"
 
 - name: Copy templates {{ oracle_sid_list[0] }}
   template:

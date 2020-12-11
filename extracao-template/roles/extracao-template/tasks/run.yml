@@ -18,7 +18,3 @@
     - TMPDIR: $TMP
     - umask: 022
   when: v_home_so_user_list[0] is defined and user_list[0] is defined and oracle_group_list[0] is defined
-
-- name: Parametriza DATABASE_NAME
-  set_fact:
-    RUN_SCRIPT: "{{ RUN_SCRIPT }}"
