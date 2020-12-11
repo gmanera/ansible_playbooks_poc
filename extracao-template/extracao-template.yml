@@ -1,5 +1,5 @@
 ---
-- name: run_vra_oracle
+- name: extracao-template
   hosts: "{{ VM_LIST }}"
   roles:
-    - run_vra_oracle
+    - extracao-template
