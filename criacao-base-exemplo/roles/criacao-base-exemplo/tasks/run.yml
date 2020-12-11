@@ -1,0 +1,20 @@
+--- 
+- name: Run DATABASE command {{ DATABASE_NAME }}
+  become: yes
+  become_user: "{{ user_list[0] }}"
+  register: RUN_SCRIPT
+  shell: "{{ user_home_list[0] }}/bin/sqlplus -S / as sysdba @{{ v_home_so_user_list[0] }}/script_ansible.sql"
+  environment:
+    - ORACLE_BASE: "{{ V_DIR_BINARIO_STAGE }}"
+    - ORACLE_HOME: "{{ user_home_list[0] }}"
+    - ORACLE_TERM: xterm
+    - PATH: $ORACLE_HOME/bin:$CLASSPATH
+    - ORACLE_OWNER: "{{ user_list[0] }}"
+    - ORACLE_SID: "{{ oracle_sid_list_database[0] }}"
+    - LD_LIBRARY_PATH: $ORACLE_HOME/lib
+    - CLASSPATH: $ORACLE_HOME/JRE:$ORACLE_HOME/jlib:$ORACLE_HOME/rdbms/jlib
+    - NLS_LANG: "{{ NLS_LANG }}"
+    - TMP: /tmp
+    - TMPDIR: $TMP
+    - umask: 022
+  when: v_home_so_user_list[0] is defined and user_list[0] is defined and oracle_group_list[0] is defined

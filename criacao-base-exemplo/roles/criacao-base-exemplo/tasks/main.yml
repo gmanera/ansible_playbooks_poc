@@ -1,0 +1,18 @@
+---
+##Playbook para realizar a extração de estruturas de base de dados.
+
+- name: /usr/bin/python CentOs 7
+  set_fact:
+    ansible_python_interpreter: "/bin/python"
+  when:
+    - ansible_facts['distribution'] == "CentOS"
+    - ansible_facts['distribution_major_version'] == "7"
+
+- name: ------------------------------------ enviromments.yml --------------------------------------
+  include_tasks: enviromments.yml
+
+- name: ------------------------------------ database.yml --------------------------------------
+  include_tasks: database.yml
+
+- name: ------------------------------------ run.yml --------------------------------------
+  include_tasks: run.yml
