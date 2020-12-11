@@ -19,7 +19,7 @@
 
 # Identifica a instancia da base sendo executada
 - name: Identify running oracle_sid
-  shell: "ps -ef | grep -i -w 'xe_pmon_{{ DATABASE_NAME }}' | grep -v grep | awk {'print $8'} | sed 's/^.........//'  | grep -v dbfs | tail -1"
+  shell: "ps -ef | grep -i -w 'xe_pmon_{{ DATABASE_NAME }}' | grep -v grep | awk {'print $8'} | sed 's/^........//'  | grep -v dbfs | tail -1"
   register: oracle_sid_list_database
   become: yes
 
