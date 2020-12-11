@@ -1,5 +1,5 @@
 --- 
-- name: clean run_all_databases_select
+- name: exemplo_softplan
   remote_user: root
   shell: "rm -rf /tmp/extracao_template/*"
 
