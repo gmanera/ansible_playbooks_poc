@@ -8,10 +8,6 @@
     - ansible_facts['distribution'] == "CentOS"
     - ansible_facts['distribution_major_version'] == "7"
 
-- name: Incluindo vault
-  include_vars: vault.yml
-  no_log: true
-
 - name: ------------------------------------ enviromments.yml --------------------------------------
   include_tasks: enviromments.yml
 
