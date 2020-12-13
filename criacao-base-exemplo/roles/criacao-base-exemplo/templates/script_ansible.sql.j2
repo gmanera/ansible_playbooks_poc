@@ -1,6 +1,8 @@
 create user {{ schema_exemplo }} identified by "{{ user_password }}";
 
- ALTER SESSION SET CURRENT_SCHEMA={{ schema_exemplo }};
+alter user {{ schema_exemplo }} quota 150m on system;
+
+ALTER SESSION SET CURRENT_SCHEMA={{ schema_exemplo }};
 
 CREATE TABLE {{ schema_exemplo }}.{{ tabela_exemplo }} (
     cpf NUMBER(16),
