@@ -1,17 +1,17 @@
-create user {{ schema_exemplo }} identified by "{{ user_password }}";
+create user {{ schema_exemplo | upper }} identified by "{{ user_password }}";
 
-alter user {{ schema_exemplo }} quota 150m on system;
+alter user {{ schema_exemplo | upper }} quota 150m on system;
 
-ALTER SESSION SET CURRENT_SCHEMA={{ schema_exemplo }};
+ALTER SESSION SET CURRENT_SCHEMA={{ schema_exemplo | upper }};
 
-CREATE TABLE {{ schema_exemplo }}.{{ tabela_exemplo }} (
+CREATE TABLE {{ schema_exemplo | upper }}.{{ tabela_exemplo | upper }} (
     cpf NUMBER(16),
     nome VARCHAR2(50) NOT NULL,
     sobrenome VARCHAR2(50) NOT NULL,
     PRIMARY KEY(cpf)
 );
 
-INSERT INTO {{ schema_exemplo }}.{{ tabela_exemplo }} 
+INSERT INTO {{ schema_exemplo | upper }}.{{ tabela_exemplo | upper }} 
 VALUES (03485, 'Gabriel', 'Manera');
 
 EXIT;
