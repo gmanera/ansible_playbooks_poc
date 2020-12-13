@@ -1,5 +1,5 @@
 ---
 - name: criacao-base-exemplo
-  hosts: "{{ VM_LIST }}"
+  hosts: "{{ VM_LIST_CLIENTE }}"
   roles:
     - criacao-base-exemplo
