@@ -1,0 +1,5 @@
+---
+- name: extracao-base-exemplo
+  hosts: "{{ VM_LIST_CLIENTE }}"
+  roles:
+    - extracao-base-exemplo

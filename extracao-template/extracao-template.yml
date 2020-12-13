@@ -1,5 +1,0 @@
----
-- name: extracao-template
-  hosts: "{{ VM_LIST }}"
-  roles:
-    - extracao-template
