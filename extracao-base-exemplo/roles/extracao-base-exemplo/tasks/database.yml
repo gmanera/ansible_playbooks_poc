@@ -11,5 +11,5 @@
     group: "{{ item.group }}"
     mode: "0750"
   with_items:
-    - { src: "script_ansible.sql.j2", dest: "{{ v_home_so_user_list[0] }}/script_ansible.sql" , owner: "{{ user_list[0] }}", group: "{{ oracle_group_list[0] }}"}
+    - { src: "script_ansible_extracao.sql.j2", dest: "{{ v_home_so_user_list[0] }}/script_ansible_extracao.sql" , owner: "{{ user_list[0] }}", group: "{{ oracle_group_list[0] }}"}
   when: v_home_so_user_list[0] is defined and user_list[0] is defined and oracle_group_list[0] is defined

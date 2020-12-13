@@ -3,7 +3,7 @@
   become: yes
   become_user: "{{ user_list[0] }}"
   register: RUN_SCRIPT
-  shell: "{{ user_home_list[0] }}/bin/sqlplus -S / as sysdba @{{ v_home_so_user_list[0] }}/script_ansible.sql"
+  shell: "{{ user_home_list[0] }}/bin/sqlplus -S / as sysdba @{{ v_home_so_user_list[0] }}/script_ansible_extracao.sql"
   environment:
     - ORACLE_BASE: "{{ V_DIR_BINARIO_STAGE }}"
     - ORACLE_HOME: "{{ user_home_list[0] }}"
