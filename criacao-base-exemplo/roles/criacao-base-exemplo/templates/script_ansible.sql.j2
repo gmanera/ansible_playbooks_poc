@@ -1,16 +1,13 @@
 create user {{ schema_exemplo }} identified by "{{ user_password }}";
 
-CREATE TABLE {{ schema_exemplo }}.{{ tabela_exemplo }}(
+ALTER SESSION CURRENT SCHEMA {{ schema_exemplo }};
+
+CREATE TABLE {{ schema_exemplo }}.{{ tabela_exemplo }} (
     cpf NUMBER(16),
     nome VARCHAR2(50) NOT NULL,
     sobrenome VARCHAR2(50) NOT NULL,
     PRIMARY KEY(cpf)
 );
 
-INSERT INTO {{ schema_exemplo }}.{{ tabela_exemplo }}
-(cpf, nome, sobrenome)
-VALUES
-(0392488347, 'Gabriel', 'Manera'
-);
 
 EXIT;
