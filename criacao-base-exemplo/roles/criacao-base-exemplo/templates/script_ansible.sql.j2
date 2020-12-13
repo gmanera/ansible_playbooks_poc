@@ -1,6 +1,6 @@
 create user {{ schema_exemplo }} identified by "{{ user_password }}";
 
-ALTER SESSION CURRENT SCHEMA {{ schema_exemplo }};
+alter session set current_schema {{ schema_exemplo }};
 
 CREATE TABLE {{ schema_exemplo }}.{{ tabela_exemplo }} (
     cpf NUMBER(16),
