@@ -1,2 +1,2 @@
-select dbms_metadata.get_ddl('{{ tabela_exemplo }}', 'TABELA_IMPORTADA_{{ tabela_exemplo }}') from dual;
+select dbms_metadata.get_ddl( 'TABLE', '{{ tabela_exemplo }}','{{ schema_exemplo }}' ) from dual;
 EXIT;
