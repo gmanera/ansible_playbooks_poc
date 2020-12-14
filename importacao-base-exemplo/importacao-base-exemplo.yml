@@ -1,0 +1,5 @@
+---
+- name: importacao-base-exemplo
+  hosts: "{{ VM_LIST_DESENVOLVIMENTO }}"
+  roles:
+    - importacao-base-exemplo

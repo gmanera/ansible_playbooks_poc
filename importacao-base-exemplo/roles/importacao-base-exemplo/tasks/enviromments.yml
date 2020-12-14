@@ -1,0 +1,62 @@
+---
+
+- file:
+    path: /tmp/extracao_template/
+    state: directory
+    mode: 0777
+    
+# Valida o usuáro Oracle rodando a base
+- name: Identify oracle users
+  shell: "ps -ef | grep -i -w 'xe_pmon_{{ DATABASE_NAME }}' | awk {'print $1'} | grep -v root | tail -1"
+  become: yes
+  become_user: root
+  register: user_list
+
+# Salva variavel Oracle rodando a base
+- name: Create variable with oracle user
+  set_fact:
+    user_list: "{{ user_list.stdout_lines | from_yaml }} "
+
+# Identifica a instancia da base sendo executada
+- name: Identify running oracle_sid
+  shell: "ps -ef | grep -i -w 'xe_pmon_{{ DATABASE_NAME }}' | grep -v grep | awk {'print $8'} | sed 's/^........//'  | grep -v dbfs | tail -1"
+  register: oracle_sid_list_database
+  become: yes
+
+# Salva a variavel da instancia da base sendo executada
+- name: Create variable with oracle homes
+  set_fact:
+    oracle_sid_list_database: "{{ oracle_sid_list_database.stdout_lines | from_yaml }} "
+
+## Identify home for oracle database
+- name: Identify all oracle home
+  shell: "cat /etc/oratab | grep -i -w {{ item }} | awk -F: '{ print $2}' | grep -v -i grid | grep -v -i dbfs | tail -1 | grep -i -v goldengate"
+  register: user_home_list
+  with_items: "{{ oracle_sid_list_database }}"
+  ignore_errors: true
+
+## Identifica o Oracle Home da base.
+- name: Create variable with oracle homes
+  set_fact:
+    user_home_list: "{{ user_home_list.results | map(attribute='stdout_lines') | flatten }}"
+
+- name: get ORACLE_GROUP
+  shell: "id -gn | grep -v root"
+  register: oracle_group_list
+  become: yes
+  become_user: "{{ item }}"
+  with_items: "{{ user_list }}"
+
+- name: Create variable with ORACLE_GROUP list
+  set_fact:
+    oracle_group_list: "{{ oracle_group_list.results | map(attribute='stdout_lines') | flatten }}"
+
+- name: getent V_HOME_SO_USER
+  shell: "getent passwd | grep -i -w {{ item }} | awk -F: '{ print $6}' | grep -v root"
+  become: true
+  register: v_home_so_user_list
+  with_items: "{{ user_list }}"
+
+- name: Create variable with v_home_so_user_list
+  set_fact:
+    v_home_so_user_list: "{{ v_home_so_user_list.results | map(attribute='stdout_lines') | flatten }}"
