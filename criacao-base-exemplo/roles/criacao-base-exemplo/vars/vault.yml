@@ -1,1 +1,20 @@
-user_password: AMdhd5770)
+---
+######### TOWER ########
+
+ANSIBLE_TOWER_USER:           "sis.ansible-prd"
+ANSIBLE_TOWER_PASSWORD:       "MkfJP@0N#7mNuAy"
+
+######### TESTE EUS ########
+TESTE_EUS_USER:               "TESTE_EUS"
+TESTE_EUS_PASSWORD:           "s8CQNsLWCa*"
+
+######## DBVAULT PASSWORDS ########
+imc_password:                 "tvt123"
+ansible_user_password:        "MkfJP-0N#7mNuAy"
+GIA_DB_PASSWORD:               "ZgSWG#JQ74vnbKR"
+ANSIBLE_USER:                 "sis.ansible-prd"
+
+###### EUS #########
+
+EUS_USER:               "GIA_DB"
+EUS_PASSWORD:           "ZgSWGJ*vnbKR"
