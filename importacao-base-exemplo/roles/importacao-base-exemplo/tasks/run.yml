@@ -18,3 +18,8 @@
     - TMPDIR: $TMP
     - umask: 022
   when: v_home_so_user_list[0] is defined and user_list[0] is defined and oracle_group_list[0] is defined
+
+# Salva dados das tabelas extraidas
+- name: Create variable script_ansible_extracao
+  set_fact:
+    script_ansible_extracao: "{{ script_ansible_extracao.sql.stdout_lines }} "
