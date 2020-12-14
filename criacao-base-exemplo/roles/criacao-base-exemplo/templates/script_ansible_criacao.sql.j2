@@ -1,4 +1,4 @@
-DROP USER {{ schema_exemplo | upper }}.{{ tabela_exemplo | upper }} CASCADE;
+DROP USER {{ schema_exemplo | upper }} CASCADE;
 
 create user {{ schema_exemplo | upper }} identified by "{{ user_password }}";
 
