@@ -2,5 +2,11 @@ ALTER SESSION SET CURRENT_SCHEMA={{ schema_exemplo | upper }};
 spool on;
 SPOOL /tmp/extracao_template/importar_script.sql ;
 set heading off;
+set long 100000
+set head off
+set echo off
+set pagesize 0
+set verify off
+set feedback off
 select dbms_metadata.get_ddl( 'TABLE', '{{ tabela_exemplo | upper }}','{{ schema_exemplo | upper }}') from dual;
 EXIT;
