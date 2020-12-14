@@ -1,5 +1,0 @@
----
-- name: criacao-base-exemplo
-  hosts: "{{ VM_LIST }}"
-  roles:
-    - extracap-base-exemplo
