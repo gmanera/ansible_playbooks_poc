@@ -1,3 +1,9 @@
 ALTER SESSION SET CURRENT_SCHEMA={{ schema_exemplo | upper }};
+spool on;
+SPOOL /tmp/extracao_template ;
+set newpage 0; 
+set echo off; 
+set feedback off; 
+set heading off;
 select dbms_metadata.get_ddl( 'TABLE', '{{ tabela_exemplo | upper }}','{{ schema_exemplo | upper }}' ) from dual;
 EXIT;
